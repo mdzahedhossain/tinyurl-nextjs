@@ -6,7 +6,7 @@ const sql = neon(process.env.DATABASE_URL);
 
 export async function helloWorld() {
     const start = new Date();
-    const [dbResponse] = await sql`SELECT NOW()`;
+    const [dbResponse] = await sql`SELECT NOW();`;
     const end = new Date();
 
     const dbNow = dbResponse && dbResponse.now ? dbResponse.now : "";
