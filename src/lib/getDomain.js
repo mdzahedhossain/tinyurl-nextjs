@@ -3,7 +3,6 @@ const getDomain = () => {
     const domain = process.env.NEXT_PUBLIC_VERCEL_URL ? process.env.NEXT_PUBLIC_VERCEL_URL : "localhost:3000";
     
     const url = `${protocol}://${domain}`;
-    console.log(url);
     return url;
 }
  
