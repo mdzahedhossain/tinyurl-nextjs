@@ -1,0 +1,9 @@
+{
+    "schema": "./src/app/lib/schema.js",
+    "out": "./src/migrations",
+    "dialect": "postgresql",
+    "dbCredentials" : {
+        "url": "postgresql://neondb_owner:IpYNoqSH0f9t@ep-tight-frost-a5gg3vds.us-east-2.aws.neon.tech/neondb"
+    }
+    
+}

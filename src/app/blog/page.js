@@ -1,6 +1,6 @@
-import getDomain from "@/lib/getDomain";
+import getDomain from "@/app/lib/getDomain";
 import BlogCard from "./card";
-import { helloWorld } from "@/lib/db";
+import { helloWorld } from "@/app/lib/db";
 
 // fetch caching option
 // force-cache is default

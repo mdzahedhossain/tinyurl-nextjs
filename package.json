@@ -6,16 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.4",
+    "drizzle-orm": "^0.32.1",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
     "swr": "^2.2.5"
   },
   "devDependencies": {
+    "drizzle-kit": "^0.23.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",

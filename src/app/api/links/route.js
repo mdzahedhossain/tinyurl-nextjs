@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
-import isValidURL from "@/lib/isValidUrl";
+import isValidURL from "@/app/lib/isValidUrl";
+import { addLink, getLinks } from "@/app/lib/db";
+
+export async function GET(request) {
+   const links = await getLinks(); 
+
+   return NextResponse.json(links, { status: 200});
+}
 
 export async function POST(request) {
     const contentType = await request.headers.get("content-type");
@@ -15,5 +22,6 @@ export async function POST(request) {
         return NextResponse.json({"message" : `${url} is not valid.`}, {status: 400});
     }
 
-    return NextResponse.json(data, {status: 201});
+    const dbResponse = await addLink(url);
+    return NextResponse.json(dbResponse, {status: 201});
 }

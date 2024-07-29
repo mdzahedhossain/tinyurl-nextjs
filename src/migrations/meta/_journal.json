@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1722209060372,
+      "tag": "0000_long_harpoon",
+      "breakpoints": true
+    }
+  ]
+}
