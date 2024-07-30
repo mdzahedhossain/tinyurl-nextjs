@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const LinksCreateForm = () => {
+const LinksCreateForm = ({didSubmit}) => {
 
     const [results, setResults] = useState(null);
 
@@ -26,6 +26,10 @@ const LinksCreateForm = () => {
         const response = await fetch(endpoint, options);
         const result = await response.json();
         setResults(result);
+
+        if (didSubmit) {
+            didSubmit(result);
+        }
     }
     return ( 
         <>
