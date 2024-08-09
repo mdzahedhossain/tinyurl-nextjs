@@ -23,7 +23,6 @@ const RegisterForm = ({didSubmit}) => {
             body: JSONData
         };
 
-        console.log(options);
         const response = await fetch(endpoint, options);
         const result = await response.json();
         setResults(result);

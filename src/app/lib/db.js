@@ -69,7 +69,7 @@ async function configureDatabase() {
     `
 }
 
-configureDatabase().catch(err => console.log("db config error", err));
+//configureDatabase().catch(err => console.log("db config error", err));
 
 export async function addLink(url) {
     const short = randomShortStrings();
@@ -79,14 +79,14 @@ export async function addLink(url) {
     if (user) {
         newLink["userId"] = user;
     }
-    console.log(newLink);
+    //console.log(newLink);
     let response = [{message: `${url} is not valid. Please try again.`}];
     let responseStatus = 400;
     try {
         response = await db.insert(LinksTable).values(newLink).returning();
         responseStatus = 201;
     } catch ({name, message}) {
-        console.log(name, message);
+        //console.log(name, message);
         if (`${message}`.includes('duplicate key value violates unique constraint')) {
             response = [{message: `${url} has already been added`}] 
         } 
@@ -116,7 +116,7 @@ export async function registerUser(newUserData) {
         }];
         responseStatus = 201;
     } catch ({name, message}) {
-        console.log(name, message);
+        //console.log(name, message);
         if (`${message}`.includes('duplicate key value violates unique constraint')) {
             response = [{message: `${newUserData.username} is already taken.`}] 
         } 

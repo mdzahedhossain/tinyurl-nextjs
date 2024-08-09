@@ -19,7 +19,6 @@ async function triggerVisit(linkId) {
 }
 
 const ShortPage = async ({ params }) => {
-    console.log(params);
     const { short } = params;
 
     if (!short) {
