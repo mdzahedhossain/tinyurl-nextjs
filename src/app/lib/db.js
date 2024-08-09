@@ -97,7 +97,7 @@ export async function addLink(url) {
 export async function registerUser(newUserData) {
     const toInsertData = {
         username: newUserData.username,
-        password: hashPassword(newUserData.password)
+        password: await hashPassword(newUserData.password)
     }
 
     if (newUserData.email) {
