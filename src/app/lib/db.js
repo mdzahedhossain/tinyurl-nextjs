@@ -69,7 +69,7 @@ async function configureDatabase() {
     `
 }
 
-//configureDatabase().catch(err => console.log("db config error", err));
+configureDatabase().catch(err => console.log("db config error", err));
 
 export async function addLink(url) {
     const short = randomShortStrings();
