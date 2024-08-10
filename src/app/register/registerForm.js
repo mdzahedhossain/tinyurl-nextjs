@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from "react";
+import { Alert } from "flowbite-react";
 
 const RegisterForm = ({didSubmit}) => {
 
     const [results, setResults] = useState(null);
+    const [message, setMessage] = useState(null);
 
     const handleForm = async (event) => {
         event.preventDefault();
@@ -30,9 +32,16 @@ const RegisterForm = ({didSubmit}) => {
         if (didSubmit) {
             didSubmit(result);
         }
+
+        if(result.message) {
+            setMessage(result.message);
+        }
     }
     return ( 
         <>
+            {
+                message && <Alert color="warning">{message}</Alert>
+            }
             <form onSubmit={handleForm}>
                 <input type="text" name="username" placeholder="Pick a username" />
                 <input type="email" name="email" placeholder="Your email" />

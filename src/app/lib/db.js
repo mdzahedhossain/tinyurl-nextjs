@@ -80,7 +80,7 @@ export async function addLink(url) {
         newLink["userId"] = user;
     }
     //console.log(newLink);
-    let response = [{message: `${url} is not valid. Please try again.`}];
+    let response = {message: `${url} is not valid. Please try again.`};
     let responseStatus = 400;
     try {
         response = await db.insert(LinksTable).values(newLink).returning();
@@ -88,7 +88,7 @@ export async function addLink(url) {
     } catch ({name, message}) {
         //console.log(name, message);
         if (`${message}`.includes('duplicate key value violates unique constraint')) {
-            response = [{message: `${url} has already been added`}] 
+            response = {message: `${url} has already been added`}
         } 
     }
     return { data: response, status: responseStatus};
@@ -104,7 +104,7 @@ export async function registerUser(newUserData) {
         toInsertData['email'] = newUserData.email;
     }
 
-    let response = [{message: `Failed to register. Please try again...`}];
+    let response = {message: `Failed to register. Please try again...`};
     let responseStatus = 400;
     try {
         let dbResponse = await db.insert(UsersTable).values(toInsertData).returning();
@@ -118,7 +118,7 @@ export async function registerUser(newUserData) {
     } catch ({name, message}) {
         //console.log(name, message);
         if (`${message}`.includes('duplicate key value violates unique constraint')) {
-            response = [{message: `${newUserData.username} is already taken.`}] 
+            response = {message: `${newUserData.username} is already taken.`}
         } 
     }
     return { data: response, status: responseStatus};

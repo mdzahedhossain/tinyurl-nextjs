@@ -21,10 +21,19 @@ export async function POST(request) {
     }
 
     const dbResponse = await getUserByUsername(username);
+    if (!dbResponse){
+        return NextResponse.json({"message" : `No user found with that username or password.`}, {status: 400});
+    }
     const userRecord = dbResponse[0];
+    if (!userRecord){
+        return NextResponse.json({"message" : `No user found with that username or password.`}, {status: 400});
+    }
     const userRecordId = userRecord.id;
-
     const storedUserHash = userRecord.password;
+    if (!userRecordId || !storedUserHash){
+        return NextResponse.json({"message" : `No user found with that username or password.`}, {status: 400});
+    }
+
     const isValidPasswordRequest = await isMatchingPassword(password, storedUserHash);
 
     if (!isValidPasswordRequest) {
