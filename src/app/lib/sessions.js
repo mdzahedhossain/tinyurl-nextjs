@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 const secret = new TextEncoder().encode(process.env.JOSE_SESSION_KEY);
 const issuer = 'urn:tinyurlnextjs:issuer';
 const audience = 'urn:tinyurlnextjs:audience';
-const expiresAt = '30s';
+const expiresAt = '2h';
 
 export const encodeUserSession = async (userId) => {
     const jwt = await new jose.EncryptJWT({ 'user': userId })

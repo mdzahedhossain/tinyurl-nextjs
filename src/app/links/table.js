@@ -2,6 +2,7 @@
 
 import useSWR from 'swr';
 import LinksCreateForm from './createForm';
+import { Table } from "flowbite-react";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -19,24 +20,23 @@ const LinksHTMLTable = () => {
     return ( 
         <>
             <LinksCreateForm didSubmit={didSubmit} />
-            <table>
-                <thead>
-                    <tr>
-                        <td>ID</td>
-                        <td>URL</td>
-                        <td>Short</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data && data.map((link, idx) => {
-                        return <tr key={`link-item-${link.id}-${idx}`}>
-                            <td>{link.id}</td>
-                            <td>{link.url}</td>
-                            <td>{link.short}</td>
-                        </tr>
-                    })}
-                </tbody>
-            </table>
+
+            <Table>
+                <Table.Head>
+                <Table.HeadCell>ID</Table.HeadCell>
+                <Table.HeadCell>URL</Table.HeadCell>
+                <Table.HeadCell>SHORT LINK</Table.HeadCell>
+                </Table.Head>
+                <Table.Body className="divide-y">
+                {data && data.map((link, idx) => {
+                    return <Table.Row key={`link-item-${link.id}-${idx}`} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{link.id}</Table.Cell>
+                        <Table.Cell>{link.url}</Table.Cell>
+                        <Table.Cell>tinyurl-nextjs.com/{link.short}</Table.Cell>
+                    </Table.Row>
+                })}
+                </Table.Body>
+            </Table>
         </>
      );
 }

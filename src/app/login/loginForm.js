@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Alert } from "flowbite-react";
+import { Button, Label, TextInput } from "flowbite-react";
 
 const LoginForm = ({didSubmit}) => {
 
@@ -45,10 +46,20 @@ const LoginForm = ({didSubmit}) => {
             {
                 message && <Alert color="warning">{message}</Alert>
             }
-            <form onSubmit={handleForm}>
-                <input type="text" name="username" placeholder="Your username" />
-                <input type="password" name="password" placeholder="Your password" />
-                <button type="submit">Login</button>
+            <form className="flex max-w-md flex-col gap-4" onSubmit={handleForm}>
+                <div>
+                    <div className="mb-2 block">
+                    <Label htmlFor="username" value="Enter your username" />
+                    </div>
+                    <TextInput id="username" name="username" type="text" placeholder="Your username" required />
+                </div>
+                <div>
+                    <div className="mb-2 block">
+                    <Label htmlFor="password" value="Enter your password" />
+                    </div>
+                    <TextInput id="password" name="password" type="password" placeholder="********" required />
+                </div>
+                <Button type="submit">Login</Button>
             </form>
         </>
      );
